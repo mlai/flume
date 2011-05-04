@@ -31,7 +31,7 @@ to call at top-level: ant deploy-contrib compile-core-test
   <property name="version.major" value="0"/>
   <property name="version.minor" value="9"/>
   <property name="version.rev" value="-tm-5"/>
-  <property name="version.numbers" value="${version.major}.${version.minor}.${version.rev}"/>
+  <property name="version.numbers" value="${version.major}.${version.minor}${version.rev}"/>
   <property name="version" value="${version.numbers}"/>
   <property name="final.name" value="${name}-${version}"/>
   <property name="year" value="2009-2011"/>
