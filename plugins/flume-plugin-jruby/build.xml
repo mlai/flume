@@ -21,10 +21,10 @@
    Before you can run these subtargets directly, you need
    to call at top-level: ant deploy-contrib compile-core-test
   -->
-<project name="flume-hbase" default="jar">
+<project name="jruby-flume" default="jar">
   <property name="javac.debug" value="on"/>
   <property name="flume.base" value="../.."/>
-  <property name="hbase.jar.file.name" value="flume-plugin-hbase.jar"/>
+  <property name="jruby.jar.file.name" value="flume-plugin-jruby.jar"/>
 
   <path id="classpath">
     <!-- in case we are running in dev env -->
@@ -33,9 +33,7 @@
       <include name="**/google-collect*.jar" />
       <include name="**/guava*.jar" />
       <include name="**/log4j-*.jar" />
-      <include name="**/slf4j-api-1.6.1.jar" />
-      <include name="**/hadoop-core-*.jar" />
-      <include name="**/hbase-*.jar" />
+      <include name="**/slf4j-*.jar" />
     </fileset>
     <!-- in case we are running in release env -->
     <fileset dir="${flume.base}">
@@ -48,11 +46,11 @@
     <mkdir dir="build"/>
     <mkdir dir="build/classes"/>
 
-    <javac srcdir="./src/main/java" destdir="build/classes" debug="${javac.debug}">
+    <javac srcdir="./src/java" destdir="build/classes" debug="${javac.debug}">
       <classpath refid="classpath"/>
     </javac>   
 
-    <jar jarfile="${hbase.jar.file.name}" basedir="build/classes"/>
+    <jar jarfile="${jruby.jar.file.name}" basedir="build/classes"/>
   </target>
 
   <target name="clean">
