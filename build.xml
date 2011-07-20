@@ -59,7 +59,9 @@ to call at top-level: ant deploy-contrib compile-core-test
   <property name="docs.src.dir" value="${src.dir}/docs"/>
   <property name="conf.dir" value="${basedir}/conf"/>
   <property name="data.dir" value="${src.dir}/data"/>  	
-  <property name="perf.data.dir" value="${src.dir}/javaperf/data"/>  	
+  <property name="perf.data.dir" value="${src.dir}/javaperf/data"/>
+
+  <property name="plugin.dir" value="${basedir}/plugins/"/>  	
 
   <property name="build.webapps" value="${build.dir}/webapps"/>
   <property name="src.webapps" value="${basedir}/src/webapps"/>
@@ -696,10 +698,24 @@ to call at top-level: ant deploy-contrib compile-core-test
 
   </target>
 
+  <target name="jar-plugins" depends="compile-core" description="Make plugin jars">
+    <ant antfile="${plugin.dir}/flume-plugin-hbasesink/build.xml" target="jar"
+        dir="${plugin.dir}/flume-plugin-hbasesink/" inheritAll="true"/>
+    <copy todir="${build.dir}">
+      <fileset dir="${plugin.dir}/flume-plugin-hbasesink/" 
+          includes="**/*.jar"/>
+    </copy>
+  </target>
+
+  <target name="clean-plugins" description="Clean plugins">
+    <ant antfile="${plugin.dir}/flume-plugin-hbasesink/build.xml" target="clean"
+        dir="${plugin.dir}/flume-plugin-hbasesink/"/>
+  </target>
+
   <!-- ================================================================== -->
   <!-- Make flume.jar                                                     -->
   <!-- ================================================================== -->
-  <target name="jar" depends="compile-core,compile-jsps" description="Make flume.jar">
+  <target name="jar" depends="compile-core,compile-jsps,jar-plugins" description="Make flume.jar">
     <jar jarfile="${build.dir}/${final.name}-core.jar"
          basedir="${build.classes}">
       <manifest>
@@ -1154,7 +1170,7 @@ to call at top-level: ant deploy-contrib compile-core-test
   <!-- ================================================================== -->
   <!-- clean -->
   <!-- ================================================================== -->
-  <target name="clean">
+  <target name="clean" depends="clean-plugins">
     <echo message="Cleaning generated files and stuff"/>
     <delete dir="${build.dir}" />
   </target>
