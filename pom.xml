@@ -10,7 +10,7 @@
 
   <groupId>com.cloudera</groupId>
   <artifactId>flume</artifactId>
-  <version>0.9.4-cdh3u1-SNAPSHOT</version>
+  <version>0.9.4-tm-5</version>
   <packaging>pom</packaging>
   <name>Flume</name>
 
