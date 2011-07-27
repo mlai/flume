@@ -199,6 +199,13 @@
       </excludes>
     </fileSet>
 
+    <!-- Copy license files -->
+    <fileSet>
+      <outputDirectory>license</outputDirectory>
+      <directory>../license</directory>
+      <includes />
+    </fileSet>
+
   </fileSets>
 
 </assembly>

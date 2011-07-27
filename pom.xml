@@ -619,6 +619,12 @@
         <version>2.x</version>
       </dependency>
 
+      <dependency> 
+        <groupId>com.espertech</groupId> 
+        <artifactId>esper</artifactId> 
+        <version>4.3.0</version> 
+      </dependency>
+
     </dependencies>
   </dependencyManagement>
 
