@@ -2,12 +2,13 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
+<!--
   <parent>
     <groupId>com.cloudera.cdh</groupId>
     <artifactId>cdh-root</artifactId>
     <version>3.0-u1-SNAPSHOT</version>
   </parent>
-
+-->
   <groupId>com.cloudera</groupId>
   <artifactId>flume</artifactId>
   <version>0.9.4-tm-5</version>
@@ -21,6 +22,10 @@
 
     <!-- Set default encoding to UTF-8 to remove maven complaints -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <hadoop.version>0.20-tm-5</hadoop.version>
+    <zookeeper.version>3.4.0-tm-5</zookeeper.version>
+
   </properties>
 
   <profiles>
@@ -590,7 +595,7 @@
       <dependency>
         <groupId>org.apache.zookeeper</groupId>
         <artifactId>zookeeper</artifactId>
-        <version>${cdh.zookeeper.version}</version>
+        <version>${zookeeper.version}</version>
         <exclusions>
           <exclusion>
             <groupId>javax.jms</groupId>
@@ -610,7 +615,7 @@
       <dependency>
         <groupId>org.apache.hadoop</groupId>
         <artifactId>hadoop-core</artifactId>
-        <version>${cdh.hadoop.version}</version>
+        <version>${hadoop.version}</version>
       </dependency>
 
       <dependency>
