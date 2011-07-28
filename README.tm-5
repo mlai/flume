@@ -1,1 +1,3 @@
-Use ./cloudera/do-release-build to build a package.
+Use ./cloudera/do-release-build to build a package. 
+Check /build/ directory for installation file.
+

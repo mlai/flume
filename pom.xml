@@ -43,6 +43,7 @@
         <module>flume-docs</module>
         <module>plugins/flume-plugin-helloworld</module>
         <module>plugins/flume-plugin-hbasesink</module>
+        <module>plugins/flume-plugin-jruby</module>
         <module>flume-distribution</module>
         <module>flume-log4j-appender</module>
       </modules>
@@ -60,6 +61,7 @@
         <module>flume-node-web</module>
         <module>plugins/flume-plugin-helloworld</module>
         <module>plugins/flume-plugin-hbasesink</module>
+        <module>plugins/flume-plugin-jruby</module>
         <module>flume-distribution</module>
         <module>flume-log4j-appender</module>
       </modules>
