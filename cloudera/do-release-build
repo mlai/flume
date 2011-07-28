@@ -78,4 +78,4 @@ mvn clean package -Dmaven.revision=${FLUME_GIT_HASH} -Dthrift.executable=${THRIF
 
 rm -rf build
 mkdir build
-cp flume-distribution/target/flume-distribution-${FULL_VERSION}-project.tar.gz build/flume-${FULL_VERSION}.tar.gz
+cp flume-distribution/target/flume-distribution-${FULL_VERSION}-bin.tar.gz build/flume-${FULL_VERSION}.tar.gz

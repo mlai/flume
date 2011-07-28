@@ -129,6 +129,15 @@
       <directory>../license</directory>
       <includes />
     </fileSet>
+
+    <fileSet>
+      <outputDirectory>lib</outputDirectory>
+      <directory>../plugins/flume-plugin-hbasesink/target/</directory>
+      <includes>
+    	<include>**.jar</include>
+      </includes>
+    </fileSet>
+
   </fileSets>
 
 </assembly>
