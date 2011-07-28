@@ -26,49 +26,49 @@ import javax.script.SimpleBindings;
  */
 public class JRubyDecorator<S extends EventSink> extends EventSinkDecorator<S> {
 
-    public JRubyDecorator(S s) {
-        super(s);
-    }
+  public JRubyDecorator(S s) {
+    super(s);
+  }
 
-    public static SinkDecoBuilder builder() {
-        return new SinkDecoBuilder() {
-            // construct a new parameterized decorator
+  public static SinkDecoBuilder builder() {
+    return new SinkDecoBuilder() {
+      // construct a new parameterized decorator
 
-            @Override
-            public EventSinkDecorator<EventSink> build(Context context,
-                    String... argv) {
+      @Override
+      public EventSinkDecorator<EventSink> build(Context context,
+          String... argv) {
 
-                EventSinkDecorator<EventSink> d = null;
-                Preconditions.checkArgument(argv.length >= 1,
-                        "usage: jRubyDecorator script.rb [optional script arguments]");
+        EventSinkDecorator<EventSink> d = null;
+        Preconditions.checkArgument(argv.length >= 1,
+            "usage: jRubyDecorator script.rb [optional script arguments]");
 
-                ScriptEngine jruby = new ScriptEngineManager().getEngineByName("ruby");
-                //jruby.put(ScriptEngine.ARGV, java.util.Arrays.copyOfRange(argv, 1, argv.length));
-                Bindings bindings = new SimpleBindings();
-                bindings.put("context", context);
-                bindings.put("args", Arrays.copyOfRange(argv, 1, argv.length));
-                try {
-                    d = (EventSinkDecorator<EventSink>) jruby.eval(new BufferedReader(new FileReader(argv[0])),bindings);
-                } catch (FileNotFoundException e) {
-                    throw new IllegalArgumentException("Script file not found: " + argv[0], e);
-                } catch (ScriptException e) {
-                    throw new IllegalArgumentException("Error executing script: " + argv[0], e);
-                }
+        ScriptEngine jruby = new ScriptEngineManager().getEngineByName("ruby");
+        //jruby.put(ScriptEngine.ARGV, java.util.Arrays.copyOfRange(argv, 1, argv.length));
+        Bindings bindings = new SimpleBindings();
+        bindings.put("context", context);
+        bindings.put("args", Arrays.copyOfRange(argv, 1, argv.length));
 
-                return d;
-            };
-        };
-    }
+        try {
+          d = (EventSinkDecorator<EventSink>) jruby.eval(new BufferedReader(new FileReader(argv[0])),bindings);
+        } catch (FileNotFoundException e) {
+          throw new IllegalArgumentException("Script file not found: " + argv[0], e);
+        } catch (ScriptException e) {
+          throw new IllegalArgumentException("Error executing script: " + argv[0], e);
+        }
+        return d;
+      };
+    };
+  }
 
-    /**
-     * This is a special function used by the SourceFactory to pull in this class
-     * as a plugin decorator.
-     */
-    public static List<Pair<String, SinkDecoBuilder>> getDecoratorBuilders() {
-        List<Pair<String, SinkDecoBuilder>> builders =
-                new ArrayList<Pair<String, SinkDecoBuilder>>();
-        builders.add(new Pair<String, SinkDecoBuilder>("jRubyDecorator",
-                builder()));
-        return builders;
-    }
+  /**
+   * This is a special function used by the SourceFactory to pull in this class
+   * as a plugin decorator.
+   */
+  public static List<Pair<String, SinkDecoBuilder>> getDecoratorBuilders() {
+    List<Pair<String, SinkDecoBuilder>> builders =
+        new ArrayList<Pair<String, SinkDecoBuilder>>();
+    builders.add(new Pair<String, SinkDecoBuilder>("jRubyDecorator",
+        builder()));
+    return builders;
+  }
 }

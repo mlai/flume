@@ -28,49 +28,49 @@ import javax.script.SimpleBindings;
  */
 public class JRubySink extends EventSink.Base {
 
-    public static SinkBuilder builder() {
-        // construct a new parameterized source
-        return new SinkBuilder() {
+  public static SinkBuilder builder() {
+    // construct a new parameterized source
+    return new SinkBuilder() {
 
-            @Override
-            public EventSink build(Context cntxt, String... argv) {
-                Preconditions.checkArgument(argv.length >= 1,
-                        "usage: jRubySource script.rb [optional arguments]");
+      @Override
+      public EventSink build(Context cntxt, String... argv) {
+        Preconditions.checkArgument(argv.length >= 1,
+            "usage: jRubySource script.rb [optional arguments]");
 
-                EventSink s = null;
+        EventSink s = null;
 
-                ScriptEngine jruby = new ScriptEngineManager().getEngineByName("ruby");
-               // jruby.put(ScriptEngine.ARGV, Arrays.copyOfRange(argv, 1, argv.length));
-                Bindings bindings = new SimpleBindings();
-                bindings.put("context", cntxt);
-                bindings.put("args", Arrays.copyOfRange(argv, 1, argv.length));
-                try {
-                    s = (EventSink) jruby.eval(new BufferedReader(new FileReader(argv[0])),bindings);
-                } catch (FileNotFoundException e) {
-                    throw new IllegalArgumentException("Script file not found: " + argv[0], e);
-                } catch (ScriptException e) {
-                    throw new IllegalArgumentException("Error executing script: " + argv[0], e);
-                }
+        ScriptEngine jruby = new ScriptEngineManager().getEngineByName("ruby");
+         // jruby.put(ScriptEngine.ARGV, Arrays.copyOfRange(argv, 1, argv.length));
+        Bindings bindings = new SimpleBindings();
+        bindings.put("context", cntxt);
+        bindings.put("args", Arrays.copyOfRange(argv, 1, argv.length));
+        try {
+          s = (EventSink) jruby.eval(new BufferedReader(new FileReader(argv[0])),bindings);
+        } catch (FileNotFoundException e) {
+          throw new IllegalArgumentException("Script file not found: " + argv[0], e);
+        } catch (ScriptException e) {
+          throw new IllegalArgumentException("Error executing script: " + argv[0], e);
+        }
 
-                return s;
-            }
+        return s;
+      }
 
-            @Override
-            public EventSink build(String... strings) {
-                return build(null,strings);
-            }
+      @Override
+      public EventSink build(String... strings) {
+        return build(null,strings);
+      }
 
-        };
-    }
+    };
+  }
 
-    /**
-     * This is a special function used by the SourceFactory to pull in this class
-     * as a plugin source.
-     */
-    public static List<Pair<String, SinkBuilder>> getSinkBuilders() {
-        List<Pair<String, SinkBuilder>> builders =
-                new ArrayList<Pair<String, SinkBuilder>>();
-        builders.add(new Pair<String, SinkBuilder>("jRubySink", builder()));
-        return builders;
-    }
+  /**
+   * This is a special function used by the SourceFactory to pull in this class
+   * as a plugin source.
+   */
+  public static List<Pair<String, SinkBuilder>> getSinkBuilders() {
+    List<Pair<String, SinkBuilder>> builders =
+        new ArrayList<Pair<String, SinkBuilder>>();
+    builders.add(new Pair<String, SinkBuilder>("jRubySink", builder()));
+    return builders;
+  }
 }
