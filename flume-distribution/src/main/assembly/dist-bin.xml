@@ -130,6 +130,14 @@
       <includes />
     </fileSet>
 
+   <fileSet>
+      <outputDirectory>scripts</outputDirectory>
+      <directory>../plugins/flume-plugin-jruby/scripts/</directory>
+      <includes>
+    	<include>**.rb</include>
+      </includes>
+    </fileSet>
+
     <fileSet>
       <outputDirectory>lib</outputDirectory>
       <directory>../plugins/flume-plugin-hbasesink/target/</directory>

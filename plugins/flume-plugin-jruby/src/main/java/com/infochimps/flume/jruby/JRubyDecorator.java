@@ -42,7 +42,7 @@ public class JRubyDecorator<S extends EventSink> extends EventSinkDecorator<S> {
         Preconditions.checkArgument(argv.length >= 1,
             "usage: jRubyDecorator script.rb [optional script arguments]");
 
-        ScriptEngine jruby = new ScriptEngineManager().getEngineByName("ruby");
+        ScriptEngine jruby = new ScriptEngineManager().getEngineByName("jruby");
         //jruby.put(ScriptEngine.ARGV, java.util.Arrays.copyOfRange(argv, 1, argv.length));
         Bindings bindings = new SimpleBindings();
         bindings.put("context", context);
