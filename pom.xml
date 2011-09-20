@@ -44,6 +44,7 @@
         <module>plugins/flume-plugin-helloworld</module>
         <module>plugins/flume-plugin-hbasesink</module>
         <module>plugins/flume-plugin-jruby</module>
+        <module>plugins/flume-plugin-wrs</module>
         <module>flume-distribution</module>
         <module>flume-log4j-appender</module>
       </modules>
@@ -618,12 +619,6 @@
         <groupId>org.apache.hadoop</groupId>
         <artifactId>hadoop-core</artifactId>
         <version>${hadoop.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.apache.hbase</groupId>
-        <artifactId>hbase</artifactId>
-        <version>${hbase.version}</version>
       </dependency>
 
       <dependency>

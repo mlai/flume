@@ -9,9 +9,9 @@ java_import 'org.slf4j.LoggerFactory'
 
 # Full log decorator: changed the timestamp to use current time. 
 # This decorator is for performance test purpose. 
-class HackedFullLogDecorator < EventSinkDecorator
+class SeedededFullLogDecorator < EventSinkDecorator
   
-  # @@log = LoggerFactory.getLogger("FullLogAgentDecorator")
+  @@log = LoggerFactory.getLogger("SeedededFullLogDecorator")
   
   def getReverseDomainName(domainName)
     ret = ""
@@ -39,18 +39,19 @@ class HackedFullLogDecorator < EventSinkDecorator
         newEvent = EventImpl.new("".to_java_bytes)
         newEvent.set("lic", substrings[1].to_java_bytes)
         newTS = Time.at(Time.now()) - Time.at(0)
-        #newEvent.set("ts", substrings[2].to_java_bytes)
         newEvent.set("ts", newTS.to_s.to_java_bytes)
-        newEvent.set("rating", substrings[3].to_java_bytes)
+        newEvent.set("rt", substrings[3].to_java_bytes)
         
         urlsubstring = substrings[4].split("/")
         
         newEvent.set("url", substrings[4].to_java_bytes)
-        newEvent.set("key", (getDateTimeByTimeStamp(newTS) + ":" + 
+        newEvent.set("key", ( "%02d" % (rand(4) + 1).to_s + ":" + 
+          getDateTimeByTimeStamp(newTS)  + ":" +
           getReverseDomainName(urlsubstring[0].split(":")[0])).to_java_bytes)
         super newEvent
       else
-        super e  
+        @@log.info("++++++")
+        super e
       end
     rescue
       super e
@@ -58,4 +59,4 @@ class HackedFullLogDecorator < EventSinkDecorator
   end
 end
 
-HackedFullLogDecorator.new(nil)
+SeedededFullLogDecorator.new(nil)

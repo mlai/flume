@@ -88,6 +88,12 @@
       <artifactId>jettison</artifactId>
       <version>1.2</version>
     </dependency>
+    
+    <dependency>
+      <groupId>tomcat</groupId>
+      <artifactId>jasper-runtime</artifactId>
+      <version>5.5.15</version>
+    </dependency>
 
   </dependencies>
 
