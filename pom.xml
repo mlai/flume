@@ -15,6 +15,10 @@
 
     <!-- Set default encoding to UTF-8 to remove maven complaints -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <hadoop.version>0.20-tm-5</hadoop.version>
+    <zookeeper.version>3.4.0-tm-5</zookeeper.version>
+
   </properties>
 
   <profiles>
@@ -523,12 +527,12 @@
         <version>1.0.0</version>
       </dependency>
 
-      <!-- Dependencies: compile - CDH components -->
+      <!-- Dependencies: compile - apache components -->
 
       <dependency>
-        <groupId>com.cloudera.zookeeper</groupId>
+        <groupId>org.apache.zookeeper</groupId>
         <artifactId>zookeeper</artifactId>
-        <version>3.3.1-10</version>
+        <version>${zookeeper.version}</version>
         <exclusions>
           <exclusion>
             <groupId>javax.jms</groupId>
@@ -548,7 +552,7 @@
       <dependency>
         <groupId>org.apache.hadoop</groupId>
         <artifactId>hadoop-core</artifactId>
-        <version>0.20.2-CDH3B4</version>
+        <version>${hadoop.version}</version>
       </dependency>
 
       <dependency>

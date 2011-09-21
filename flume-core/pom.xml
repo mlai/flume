@@ -289,7 +289,7 @@
     <!-- Dependencies: compile - CDH components -->
 
     <dependency>
-      <groupId>com.cloudera.zookeeper</groupId>
+      <groupId>org.apache.zookeeper</groupId>
       <artifactId>zookeeper</artifactId>
     </dependency>
 
@@ -301,6 +301,18 @@
     <dependency>
       <groupId>org.arabidopsis.ahocorasick</groupId>
       <artifactId>ahocorasick</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging-api</artifactId>
+      <version>1.0.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>jline</groupId>
+      <artifactId>jline</artifactId>
+      <version>0.9.94</version>
     </dependency>
 
   </dependencies>
