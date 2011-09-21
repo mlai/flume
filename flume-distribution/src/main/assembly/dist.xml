@@ -129,7 +129,14 @@
        <include>**.jar</include>
       </includes>
     </fileSet>
-
+    <!-- Copy jruby plugin files -->
+    <fileSet>
+      <outputDirectory>lib</outputDirectory>
+      <directory>../plugins/flume-plugin-jruby/target/</directory>
+      <includes>
+       <include>**.jar</include>
+      </includes>
+    </fileSet>
 
   </fileSets>
 
