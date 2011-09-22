@@ -157,7 +157,7 @@
       <outputDirectory>test-endtoend</outputDirectory>
       <directory>../test-endtoend/</directory>
       <includes>
-       <include>*.*</include>
+       <include>*</include>
       </includes>
     </fileSet>
     <!-- Copy jruby scripts files -->
