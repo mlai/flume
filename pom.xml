@@ -52,10 +52,11 @@
         <module>flume-core</module>
         <module>flume-config-web</module>
         <module>flume-node-web</module>
-        <module>flume-distribution</module>
-        <module>flume-log4j-appender</module>
         <module>plugins/flume-plugin-helloworld</module>
         <module>plugins/flume-plugin-hbasesink</module>
+        <module>plugins/flume-plugin-jruby</module>
+        <module>flume-distribution</module>
+        <module>flume-log4j-appender</module>
       </modules>
     </profile>
 

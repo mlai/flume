@@ -37,6 +37,28 @@
       </includes>
     </moduleSet>
 
+    <!-- Copy flume jruby plugin to lib -->
+    <moduleSet>
+      <useAllReactorProjects>true</useAllReactorProjects>
+
+      <binaries>
+        <outputDirectory>lib</outputDirectory>
+        <unpack>false</unpack>
+        <includes />
+
+        <dependencySets>
+          <dependencySet>
+            <outputDirectory>lib</outputDirectory>
+            <includes />
+          </dependencySet>
+        </dependencySets>
+      </binaries>
+
+      <includes>
+        <include>com.cloudera.flume.plugin:flume-plugin-jruby</include>
+      </includes>
+    </moduleSet>
+
     <!-- Copy flume master web app -->
     <moduleSet>
       <useAllReactorProjects>true</useAllReactorProjects>
@@ -129,15 +151,23 @@
        <include>**.jar</include>
       </includes>
     </fileSet>
-    <!-- Copy jruby plugin files -->
+
+    <!-- Copy test files -->
     <fileSet>
-      <outputDirectory>lib</outputDirectory>
-      <directory>../plugins/flume-plugin-jruby/target/</directory>
+      <outputDirectory>test-endtoend</outputDirectory>
+      <directory>../test-endtoend/</directory>
       <includes>
-       <include>**.jar</include>
+       <include>*.*</include>
       </includes>
     </fileSet>
-
+    <!-- Copy jruby scripts files -->
+    <fileSet>
+      <outputDirectory>scripts</outputDirectory>
+      <directory>../plugins/flume-plugin-jruby/scripts/</directory>
+      <includes>
+       <include>**.rb</include>
+      </includes>
+    </fileSet>
   </fileSets>
 
 </assembly>
