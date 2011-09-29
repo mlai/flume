@@ -1,0 +1,5 @@
+a nagios plugin for parsing json from a http.
+
+obtained from https://github.com/phrawzty/check_http_json
+
+

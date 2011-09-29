@@ -1,0 +1,4 @@
+yum install -y openssl-devel nagios nrpe nagios-plugins 
+yum install -y nagios-plugins-nrpe  nagios-plugins-users nagios-plugins-disk nagios-plugins-load nagios-plugins-http nagios-plugins-procs	
+
+
